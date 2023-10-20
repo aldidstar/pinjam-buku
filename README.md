@@ -8,6 +8,7 @@
 - run "npm i"
 - create database with name "ifabula_test"
 - run sequelize commands "npx sequelize-cli db:migrate" to setup database
+- create example user and change role to 'admin'
 - copy file .env.example, paste and rename it to .env
 - replace JWT_SECRET to actual secret key
 - run "npm run dev"
