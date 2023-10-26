@@ -122,9 +122,16 @@ module.exports = {
     try {
       const payload = req.body
       const createdUser = await User.create(payload)
-      res
-        .status(201)
-        .json({ message: `User with email ${payload.email} is created` })
+      const generatedToken = signToken({
+        id: createdUser.id,
+        name: createdUser.name,
+        email: createdUser.email,
+        role: createdUser.role
+      })
+      res.status(201).json({
+        message: `User with email ${payload.email} is created`,
+        token: generatedToken
+      })
     } catch (error) {
       next(error)
     }

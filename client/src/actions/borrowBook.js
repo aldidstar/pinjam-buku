@@ -71,7 +71,9 @@ export const loadBook = () => {
         dispatch(drawLoadBook(books.data))
       })
       .catch(function (error) {
-        window.location = '/'
+        dispatch(drawLoadBook())
+
+        // window.location = '/dashboard'
         throw error
       })
   }

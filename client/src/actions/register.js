@@ -1,5 +1,4 @@
 import { SUCCESS_REGISTER } from '../constants'
-
 import axios from 'axios'
 
 const successRegister = () => ({
@@ -15,11 +14,19 @@ export const Register = (name, email, password) => {
         localStorage.setItem('token', response.data.token)
         localStorage.setItem('name', response.data.data.name)
         window.location = '/list'
-
         dispatch(successRegister())
       })
       .catch(function (error) {
-        alert(error.response.data.message)
+        console.error('Error object:', error)
+        if (
+          error.response &&
+          error.response.data &&
+          error.response.data.message
+        ) {
+          alert(error.response.data.message)
+        } else {
+          window.location = '/list'
+        }
       })
   }
 }

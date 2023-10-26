@@ -90,12 +90,6 @@ module.exports = {
         ]
       })
 
-      if (!borrowings || borrowings.length === 0) {
-        return res.status(404).json({ message: 'Borrowings not found' })
-      }
-
-      // const currentDate = new Date()
-
       const borrowingData = borrowings.map((borrowing) => {
         const returnDate = borrowing.returnDate
           ? new Date(borrowing.returnDate)
